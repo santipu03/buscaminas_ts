@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.fila {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.casella {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.revelada {
+    background-color: #ccc;
+}
+.mina {
+    background-color: red;
+}
+.marcada {
+    background-color: yellow;
+}
+.num1 {
+    color: blue;
+}
+.num2 {
+    color: green;
+}
+.num3 {
+    color: red;
+}
+.num4 {
+    color: purple;
+}
+.num5 {
+    color: brown;
+}
+.num6 {
+    color: cyan;
+}
