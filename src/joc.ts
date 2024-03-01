@@ -6,7 +6,7 @@ class Joc {
         this.dibuixarTauler();
     }
 
-    dibuixarTauler() {
+    dibuixarTauler(perdut: boolean = false) {
         const tauler = document.getElementById('tauler');
 
         if (!tauler) {
@@ -29,7 +29,6 @@ class Joc {
                     if (c.esMina) {
                         casella.classList.add('mina');
                     } else {
-                        casella.textContent = c.minesAdjacent.toString();
                         casella.classList.add('num' + c.minesAdjacent);
                     }
                 } else if (c.marcada) {
@@ -64,6 +63,21 @@ class Joc {
         if (guanyat) {
             alert('Has guanyat!');
         }
+
+        // Si l'usuari ha perdut, mostrem totes les mines
+        if (perdut) {
+            for (let i = 0; i < this.tauler.files; i++) {
+                for (let j = 0; j < this.tauler.columnes; j++) {
+                    const c = this.tauler.caselles[i][j];
+                    if (c.esMina) {
+                        c.revelada = true;
+                    }
+                }
+            }
+            this.dibuixarTauler();
+            // Esperem 10ms perquè el tauler s'actualitzi amb les mines abans de mostrar l'alerta
+            setTimeout(() => alert('Has perdut!'), 10);
+        }
     }
 
     revelarCasella(fila: number, columna: number) {
@@ -75,10 +89,11 @@ class Joc {
             return;
         }
         c.revelada = true;
+        let perdut = false;
 
         // Si la casella conté una mina, el joc s'acaba
         if (c.esMina) {
-            alert('Has perdut!');
+            perdut = true;
         }
 
         // Si la casella no conté mines adjacents, obrim les caselles adjacents
@@ -86,7 +101,7 @@ class Joc {
             this.obrirCasellesAdjacents(fila, columna);
         }
         
-        this.dibuixarTauler();
+        this.dibuixarTauler(perdut);
     }
 
     marcarCasella(fila: number, columna: number) {

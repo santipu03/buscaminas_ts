@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #eee;
 }
 .fila {
     display: flex;
@@ -16,38 +17,40 @@
     align-items: center;
 }
 .casella {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    background-image: url('./img/square.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .revelada {
-    background-color: #ccc;
+    background-image: url('./img/Minesweeper_0.gif');
 }
 .mina {
-    background-color: red;
+    background-image: url('./img/mina.png');
 }
 .marcada {
-    background-color: yellow;
+    background-image: url('./img/flag.png');
 }
 .num1 {
-    color: blue;
+    background-image: url('./img/Minesweeper_1.gif');
 }
 .num2 {
-    color: green;
+    background-image: url('./img/Minesweeper_2.gif');
 }
 .num3 {
-    color: red;
+    background-image: url('./img/Minesweeper_3.gif');
 }
 .num4 {
-    color: purple;
+    background-image: url('./img/Minesweeper_4.gif');
 }
 .num5 {
-    color: brown;
+    background-image: url('./img/Minesweeper_5.gif');
 }
 .num6 {
-    color: cyan;
+    background-image: url('./img/Minesweeper_6.gif');
 }

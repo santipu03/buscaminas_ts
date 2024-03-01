@@ -4,8 +4,9 @@ var Joc = /** @class */ (function () {
         this.tauler = new Tauler(files, columnes);
         this.dibuixarTauler();
     }
-    Joc.prototype.dibuixarTauler = function () {
+    Joc.prototype.dibuixarTauler = function (perdut) {
         var _this = this;
+        if (perdut === void 0) { perdut = false; }
         var tauler = document.getElementById('tauler');
         if (!tauler) {
             return;
@@ -27,7 +28,6 @@ var Joc = /** @class */ (function () {
                         casella.classList.add('mina');
                     }
                     else {
-                        casella.textContent = c.minesAdjacent.toString();
                         casella.classList.add('num' + c.minesAdjacent);
                     }
                 }
@@ -69,6 +69,20 @@ var Joc = /** @class */ (function () {
         if (guanyat) {
             alert('Has guanyat!');
         }
+        // Si l'usuari ha perdut, mostrem totes les mines
+        if (perdut) {
+            for (var i = 0; i < this.tauler.files; i++) {
+                for (var j = 0; j < this.tauler.columnes; j++) {
+                    var c = this.tauler.caselles[i][j];
+                    if (c.esMina) {
+                        c.revelada = true;
+                    }
+                }
+            }
+            this.dibuixarTauler();
+            // Esperem 10ms perquè el tauler s'actualitzi amb les mines abans de mostrar l'alerta
+            setTimeout(function () { return alert('Has perdut!'); }, 10);
+        }
     };
     Joc.prototype.revelarCasella = function (fila, columna) {
         var c = this.tauler.caselles[fila][columna];
@@ -79,15 +93,16 @@ var Joc = /** @class */ (function () {
             return;
         }
         c.revelada = true;
+        var perdut = false;
         // Si la casella conté una mina, el joc s'acaba
         if (c.esMina) {
-            alert('Has perdut!');
+            perdut = true;
         }
         // Si la casella no conté mines adjacents, obrim les caselles adjacents
         if (c.minesAdjacent === 0) {
             this.obrirCasellesAdjacents(fila, columna);
         }
-        this.dibuixarTauler();
+        this.dibuixarTauler(perdut);
     };
     Joc.prototype.marcarCasella = function (fila, columna) {
         var c = this.tauler.caselles[fila][columna];
