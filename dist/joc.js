@@ -81,7 +81,7 @@ var Joc = /** @class */ (function () {
             }
             this.dibuixarTauler();
             // Esperem 10ms perquè el tauler s'actualitzi amb les mines abans de mostrar l'alerta
-            setTimeout(function () { return alert('Has perdut!'); }, 100);
+            setTimeout(function () { return alert('Has perdut!'); }, 500);
         }
     };
     Joc.prototype.revelarCasella = function (fila, columna) {

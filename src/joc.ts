@@ -76,7 +76,7 @@ class Joc {
             }
             this.dibuixarTauler();
             // Esperem 10ms perquè el tauler s'actualitzi amb les mines abans de mostrar l'alerta
-            setTimeout(() => alert('Has perdut!'), 100);
+            setTimeout(() => alert('Has perdut!'), 500);
         }
     }
 
