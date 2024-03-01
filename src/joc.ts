@@ -62,6 +62,7 @@ class Joc {
         }
         if (guanyat) {
             alert('Has guanyat!');
+            window.location.reload();
         }
 
         // Si l'usuari ha perdut, mostrem totes les mines
@@ -76,7 +77,10 @@ class Joc {
             }
             this.dibuixarTauler();
             // Esperem 10ms perquè el tauler s'actualitzi amb les mines abans de mostrar l'alerta
-            setTimeout(() => alert('Has perdut!'), 500);
+            setTimeout(() => {
+                alert('Has perdut!');
+                window.location.reload();
+            }, 500);
         }
     }
 
